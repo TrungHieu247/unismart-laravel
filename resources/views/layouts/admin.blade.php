@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/solid.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script src="https://cdn.tiny.cloud/1/kk6dupmdk41huhfzs24xntq4chhg78nn22mkmr78aax2eklr/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/kk6dupmdk41huhfzs24xntq4chhg78nn22mkmr78aax2eklr/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
     <title>Admintrator</title>
 </head>
 
@@ -36,8 +37,7 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="{{ route('user.edit', Auth::id()) }}">Tài khoản</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
@@ -52,7 +52,7 @@
         <!-- end nav  -->
 
         @php
-            $module_active = session('module_active');
+        $module_active = session('module_active');
         @endphp
         <div id="page-body" class="d-flex">
             <div id="sidebar" class="bg-white">
@@ -134,27 +134,12 @@
                             <li><a href="{{ url('admin/user/list') }}">Danh sách</a></li>
                         </ul>
                     </li>
-
-                    <!-- <li class="nav-link"><a>Bài viết</a>
-                        <ul class="sub-menu">
-                            <li><a>Thêm mới</a></li>
-                            <li><a>Danh sách</a></li>
-                            <li><a>Thêm danh mục</a></li>
-                            <li><a>Danh sách danh mục</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-link"><a>Sản phẩm</a></li>
-                    <li class="nav-link"><a>Đơn hàng</a></li>
-                    <li class="nav-link"><a>Hệ thống</a></li> -->
-
                 </ul>
             </div>
             <div id="wp-content">
                 @yield('content')
             </div>
         </div>
-
-
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -166,21 +151,23 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script>
-        var editor_config = {
-            path_absolute : "http://localhost/unismart/",
-            selector: 'textarea',
-            relative_urls: false,
-            height: 350,
-            plugins: [
+    var editor_config = {
+        path_absolute: "http://localhost/unismart/",
+        selector: 'textarea',
+        relative_urls: false,
+        height: 350,
+        plugins: [
             "advlist autolink lists link image charmap print preview hr anchor pagebreak",
             "searchreplace wordcount visualblocks visualchars code fullscreen",
             "insertdatetime media nonbreaking save table directionality",
             "emoticons template paste textpattern"
-            ],
-            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-            file_picker_callback : function(callback, value, meta) {
-            var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-            var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
+        file_picker_callback: function(callback, value, meta) {
+            var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName(
+                'body')[0].clientWidth;
+            var y = window.innerHeight || document.documentElement.clientHeight || document
+                .getElementsByTagName('body')[0].clientHeight;
 
             var cmsURL = editor_config.path_absolute + 'laravel-filemanager?editor=' + meta.fieldname;
             if (meta.filetype == 'image') {
@@ -190,19 +177,19 @@
             }
 
             tinyMCE.activeEditor.windowManager.openUrl({
-                url : cmsURL,
-                title : 'Filemanager',
-                width : x * 0.8,
-                height : y * 0.8,
-                resizable : "yes",
-                close_previous : "no",
+                url: cmsURL,
+                title: 'Filemanager',
+                width: x * 0.8,
+                height: y * 0.8,
+                resizable: "yes",
+                close_previous: "no",
                 onMessage: (api, message) => {
-                callback(message.content);
+                    callback(message.content);
                 }
             });
-            }
-        };
-        tinymce.init(editor_config);
+        }
+    };
+    tinymce.init(editor_config);
     </script>
 </body>
 
